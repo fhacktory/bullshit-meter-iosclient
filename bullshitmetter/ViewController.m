@@ -45,6 +45,7 @@
                                     AVNumberOfChannelsKey: @(2)};
 
     self.recorder = [[AVAudioRecorder alloc] initWithURL:self.fileURL settings:recordSetting error:nil];
+    
 //    self.recorder.delegate = self;
     self.recorder.meteringEnabled = YES;
     [self.recorder prepareToRecord];
@@ -99,6 +100,7 @@
         [self.timer fire];
         
         AVAudioSession *session = [AVAudioSession sharedInstance];
+        [session setCategory :AVAudioSessionCategoryPlayAndRecord error:nil];
         [session setActive:YES error:nil];
         
         BOOL ok = [self.recorder record];
