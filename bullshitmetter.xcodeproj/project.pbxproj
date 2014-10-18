@@ -12,8 +12,8 @@
 		1111B65119F29AEF002D7156 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1111B65019F29AEF002D7156 /* ViewController.m */; };
 		1111B65419F29AEF002D7156 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1111B65219F29AEF002D7156 /* Main.storyboard */; };
 		1111B65619F29AEF002D7156 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1111B65519F29AEF002D7156 /* Images.xcassets */; };
-		1111B65919F29AEF002D7156 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1111B65719F29AEF002D7156 /* LaunchScreen.xib */; };
 		1111B66519F29AEF002D7156 /* bullshitmetterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1111B66419F29AEF002D7156 /* bullshitmetterTests.m */; };
+		1111BAE019F2A2CA002D7156 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1111BADF19F2A2CA002D7156 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,10 +36,10 @@
 		1111B65019F29AEF002D7156 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		1111B65319F29AEF002D7156 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1111B65519F29AEF002D7156 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		1111B65819F29AEF002D7156 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		1111B65E19F29AEF002D7156 /* bullshitmetterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bullshitmetterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1111B66319F29AEF002D7156 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1111B66419F29AEF002D7156 /* bullshitmetterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = bullshitmetterTests.m; sourceTree = "<group>"; };
+		1111BADF19F2A2CA002D7156 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1111BAE019F2A2CA002D7156 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +64,7 @@
 		1111B63C19F29AEF002D7156 = {
 			isa = PBXGroup;
 			children = (
+				1111BADF19F2A2CA002D7156 /* AVFoundation.framework */,
 				1111B64719F29AEF002D7156 /* bullshitmetter */,
 				1111B66119F29AEF002D7156 /* bullshitmetterTests */,
 				1111B64619F29AEF002D7156 /* Products */,
@@ -87,7 +89,6 @@
 				1111B65019F29AEF002D7156 /* ViewController.m */,
 				1111B65219F29AEF002D7156 /* Main.storyboard */,
 				1111B65519F29AEF002D7156 /* Images.xcassets */,
-				1111B65719F29AEF002D7156 /* LaunchScreen.xib */,
 				1111B64819F29AEF002D7156 /* Supporting Files */,
 			);
 			path = bullshitmetter;
@@ -200,7 +201,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1111B65419F29AEF002D7156 /* Main.storyboard in Resources */,
-				1111B65919F29AEF002D7156 /* LaunchScreen.xib in Resources */,
 				1111B65619F29AEF002D7156 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -250,14 +250,6 @@
 				1111B65319F29AEF002D7156 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		1111B65719F29AEF002D7156 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1111B65819F29AEF002D7156 /* Base */,
-			);
-			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -412,6 +404,7 @@
 				1111B66A19F29AEF002D7156 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1111B66B19F29AEF002D7156 /* Build configuration list for PBXNativeTarget "bullshitmetterTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +413,7 @@
 				1111B66D19F29AEF002D7156 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

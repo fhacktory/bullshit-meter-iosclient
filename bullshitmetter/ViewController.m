@@ -7,8 +7,12 @@
 //
 
 #import "ViewController.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface ViewController ()
+
+@property (strong, nonatomic) AVAudioRecorder *recorder;
+@property (strong, nonatomic) IBOutlet UITextView *textView;
 
 @end
 
@@ -19,9 +23,18 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - action
+-(IBAction)playStopAction:(id)sender
+{
+    if ([self.recorder isRecording])
+    {
+        [sender setTitle:@"Start" forState:UIControlStateNormal];
+        [self.recorder stop];
+    }
+    else
+    {
+        [sender setTitle:@"Stop" forState:UIControlStateNormal];
+        [self.recorder record];
+    }
 }
-
 @end
