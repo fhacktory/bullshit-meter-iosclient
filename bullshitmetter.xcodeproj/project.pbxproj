@@ -14,6 +14,9 @@
 		1111B65619F29AEF002D7156 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1111B65519F29AEF002D7156 /* Images.xcassets */; };
 		1111B66519F29AEF002D7156 /* bullshitmetterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1111B66419F29AEF002D7156 /* bullshitmetterTests.m */; };
 		1111BAE019F2A2CA002D7156 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1111BADF19F2A2CA002D7156 /* AVFoundation.framework */; };
+		3358EA1119F2F7C4003BD6D7 /* logo blanc.png in Resources */ = {isa = PBXBuildFile; fileRef = 3358EA1019F2F7C4003BD6D7 /* logo blanc.png */; };
+		3394B39719F2E56D001ABED1 /* WMGaugeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3394B39619F2E56D001ABED1 /* WMGaugeView.m */; };
+		33D9A20119F2F53600B0B482 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33D9A20019F2F53600B0B482 /* Launch Screen.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,10 @@
 		1111B66319F29AEF002D7156 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1111B66419F29AEF002D7156 /* bullshitmetterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = bullshitmetterTests.m; sourceTree = "<group>"; };
 		1111BADF19F2A2CA002D7156 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		3358EA1019F2F7C4003BD6D7 /* logo blanc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo blanc.png"; sourceTree = "<group>"; };
+		3394B39519F2E56D001ABED1 /* WMGaugeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WMGaugeView.h; sourceTree = "<group>"; };
+		3394B39619F2E56D001ABED1 /* WMGaugeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WMGaugeView.m; sourceTree = "<group>"; };
+		33D9A20019F2F53600B0B482 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,12 +90,15 @@
 		1111B64719F29AEF002D7156 /* bullshitmetter */ = {
 			isa = PBXGroup;
 			children = (
+				3394B39419F2E56D001ABED1 /* Externals */,
 				1111B64C19F29AEF002D7156 /* AppDelegate.h */,
 				1111B64D19F29AEF002D7156 /* AppDelegate.m */,
 				1111B64F19F29AEF002D7156 /* ViewController.h */,
 				1111B65019F29AEF002D7156 /* ViewController.m */,
 				1111B65219F29AEF002D7156 /* Main.storyboard */,
+				33D9A20019F2F53600B0B482 /* Launch Screen.xib */,
 				1111B65519F29AEF002D7156 /* Images.xcassets */,
+				3358EA1019F2F7C4003BD6D7 /* logo blanc.png */,
 				1111B64819F29AEF002D7156 /* Supporting Files */,
 			);
 			path = bullshitmetter;
@@ -118,6 +128,15 @@
 				1111B66319F29AEF002D7156 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3394B39419F2E56D001ABED1 /* Externals */ = {
+			isa = PBXGroup;
+			children = (
+				3394B39519F2E56D001ABED1 /* WMGaugeView.h */,
+				3394B39619F2E56D001ABED1 /* WMGaugeView.m */,
+			);
+			path = Externals;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,6 +221,8 @@
 			files = (
 				1111B65419F29AEF002D7156 /* Main.storyboard in Resources */,
 				1111B65619F29AEF002D7156 /* Images.xcassets in Resources */,
+				3358EA1119F2F7C4003BD6D7 /* logo blanc.png in Resources */,
+				33D9A20119F2F53600B0B482 /* Launch Screen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,6 +240,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3394B39719F2E56D001ABED1 /* WMGaugeView.m in Sources */,
 				1111B65119F29AEF002D7156 /* ViewController.m in Sources */,
 				1111B64E19F29AEF002D7156 /* AppDelegate.m in Sources */,
 				1111B64B19F29AEF002D7156 /* main.m in Sources */,
