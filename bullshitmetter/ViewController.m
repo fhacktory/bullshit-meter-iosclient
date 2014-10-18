@@ -50,7 +50,6 @@
     [self.recorder prepareToRecord];
     
     [self configureGaugeView];
-    [self processServerResponse:nil];
 }
 
 #pragma mark - UI 
