@@ -29,6 +29,7 @@
 @end
 
 #define DURATION 30
+#define RGB(r,g,b) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1.0]
 
 @implementation ViewController
 
@@ -55,6 +56,24 @@
 
 -(void)configureGaugeView
 {
+    [self.gaugeView setInnerBackgroundStyle:WMGaugeViewInnerBackgroundStyleGradient];
+    self.gaugeView.showInnerBackground = NO;
+    self.gaugeView.scaleStartAngle = 90;
+    self.gaugeView.scaleEndAngle = 270;
+    
+    self.gaugeView.maxValue = 20.0;
+    self.gaugeView.minValue = 0.0;
+    self.gaugeView.value = 0;
+
+    _gaugeView.showRangeLabels = YES;
+    _gaugeView.rangeValues = @[ @5,                  @10,                @15,               @20              ];
+    _gaugeView.rangeColors = @[ RGB(27, 202, 33), RGB(232, 231, 33),   RGB(232, 111, 33),   RGB(231, 32, 43)    ];
+    _gaugeView.rangeLabels = @[ @"NUL",          @"FAIBLE",             @"OK",              @"BULLSHIT"        ];
+    _gaugeView.unitOfMeasurement = @"Bullshit-O-mètre";
+    _gaugeView.unitOfMeasurementColor = [UIColor blackColor];
+    _gaugeView.showUnitOfMeasurement = YES;
+    _gaugeView.needleStyle = WMGaugeViewNeedleStyleFlatThin;
+    _gaugeView.needleScrewStyle = WMGaugeViewNeedleScrewStylePlain;
     
 }
 
@@ -82,8 +101,11 @@
         AVAudioSession *session = [AVAudioSession sharedInstance];
         [session setActive:YES error:nil];
         
-        [self.recorder record];
+        BOOL ok = [self.recorder record];
+        NSLog(@"%d", ok);
+        
     }
+
 }
 
 -(void)ticAction:(NSTimer *)timer
@@ -97,6 +119,9 @@
     }
     
     self.currentTime--;
+    
+    _gaugeView.value = rand()%(int)_gaugeView.maxValue;
+
 }
 
 #pragma mark - processing sound and server result
