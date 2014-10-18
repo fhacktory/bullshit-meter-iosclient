@@ -49,6 +49,7 @@
     [self.recorder prepareToRecord];
     
     [self configureGaugeView];
+    [self processServerResponse:nil];
 }
 
 #pragma mark - UI 
@@ -164,7 +165,28 @@
     serverResponse = @{ @"buzzwords" : @[@"foo", @"bar"],
                         @"grade" : @12,
                         @"flasch-kincaid" : @11.456 ,
-                        @"recognized_text": @"Mister foo walk into a Bar"};
+                        @"recognized_text": @"Mister Foo walk into a Bar named The Foo"};
+    
+    NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:serverResponse[@"recognized_text"]];
+    
+    NSArray *words = serverResponse[@"buzzwords"];
+    
+    [words enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        NSRange searchRange = NSMakeRange(0, [string.string length]);
+        
+        NSRange range;
+        while ((range = [string.string rangeOfString:obj options:NSCaseInsensitiveSearch range:searchRange]).location != NSNotFound) {
+            
+            [string addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:range];
+            [string addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:self.textView.font.pointSize] range:range];
+            
+            searchRange = NSMakeRange(NSMaxRange(range), [string.string length] - NSMaxRange(range));
+        }
+    }];
+    
+    self.textView.attributedText = string;
+    [self.gaugeView setValue:[serverResponse[@"grade"] floatValue] animated:YES];
+    
 }
 
 @end
