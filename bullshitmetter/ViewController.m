@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import "UIViewController+MBProgressHUD.h"
+#import <AFNetworking/AFNetworking.h>
 #import "WMGaugeView.h"
 
 @interface ViewController () //<AVAudioRecorderDelegate>
@@ -104,6 +106,33 @@
     
     AVAudioSession *audioSession = [AVAudioSession sharedInstance];
     [audioSession setActive:NO error:nil];
+    
+    [self showHUD];
+    
+    NSData *file = [NSData dataWithContentsOfURL:self.fileURL];
+    
+    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://92.222.1.55"]];
+    
+    AFHTTPRequestOperation *op = [manager POST:@"/sound"
+                                    parameters:nil
+                     constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+
+                         [formData appendPartWithFileData:file
+                                                     name:@"Bullshit"
+                                                 fileName:@"Bullshit.m4a"
+                                                 mimeType:@"audio/m4a"];
+                         
+                                        }
+                                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                           [self hideHUD];
+
+                                           
+                                        }
+                                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                           [self hideHUDWithCompletionMessage:error.localizedDescription];
+                                        }];
+    
+    [op start];
 }
 
 -(void)configureGaugeView
