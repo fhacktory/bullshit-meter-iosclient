@@ -9,9 +9,12 @@
 #import "ViewController.h"
 #import <AVFoundation/AVFoundation.h>
 
-@interface ViewController ()
+@interface ViewController () //<AVAudioRecorderDelegate>
 
 @property (strong, nonatomic) AVAudioRecorder *recorder;
+
+@property (strong, nonatomic) NSURL *fileURL;
+
 @property (strong, nonatomic) IBOutlet UITextView *textView;
 
 @end
@@ -20,7 +23,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    self.fileURL = [NSURL fileURLWithPathComponents:@[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject], @"Bullshit.m4a"]];
+    
+    NSDictionary *recordSetting = @{AVFormatIDKey: @(kAudioFormatMPEG4AAC),
+                                    AVSampleRateKey: @(44100.0),
+                                    AVNumberOfChannelsKey: @(2)};
+
+    self.recorder = [[AVAudioRecorder alloc] initWithURL:self.fileURL settings:recordSetting error:nil];
+//    self.recorder.delegate = self;
+    self.recorder.meteringEnabled = YES;
+    [self.recorder prepareToRecord];
 }
 
 #pragma mark - action
@@ -29,11 +42,19 @@
     if ([self.recorder isRecording])
     {
         [sender setTitle:@"Start" forState:UIControlStateNormal];
+        
         [self.recorder stop];
+        
+        AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+        [audioSession setActive:NO error:nil];
     }
     else
     {
         [sender setTitle:@"Stop" forState:UIControlStateNormal];
+        
+        AVAudioSession *session = [AVAudioSession sharedInstance];
+        [session setActive:YES error:nil];
+        
         [self.recorder record];
     }
 }
