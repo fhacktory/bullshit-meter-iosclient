@@ -128,4 +128,27 @@
     [op start];
 }
 
+-(void)processServerResponse:(NSDictionary *)serverResponse
+{
+    /*
+     expecting
+     
+     {
+     "buzzwords": [
+     "foo",
+     "bar"
+     ],
+     "grade": 12,
+     "flesch-kincaid": 11.456,
+     "recognized_text": "blabla blabla"
+     }
+     
+     */
+    
+    serverResponse = @{ @"buzzwords" : @[@"foo", @"bar"],
+                        @"grade" : @12,
+                        @"flasch-kincaid" : @11.456 ,
+                        @"recognized_text": @"Mister foo walk into a Bar"};
+}
+
 @end
