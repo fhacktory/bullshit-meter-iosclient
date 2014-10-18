@@ -37,19 +37,33 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6T2-Lj-B3p">
+                                <rect key="frame" x="16" y="539" width="50" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="8C1-7r-Red"/>
+                                    <constraint firstAttribute="height" constant="21" id="b5e-tW-Gfx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="6T2-Lj-B3p" secondAttribute="bottom" constant="40" id="CC8-cX-Nly"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="dM6-Vz-xl7" secondAttribute="bottom" constant="25" id="Vkb-TC-c0D"/>
                             <constraint firstAttribute="centerX" secondItem="dM6-Vz-xl7" secondAttribute="centerX" id="XRb-OX-tZE"/>
                             <constraint firstItem="dM6-Vz-xl7" firstAttribute="top" secondItem="xCb-SZ-b60" secondAttribute="bottom" constant="25" id="aEm-6e-ByA"/>
+                            <constraint firstItem="6T2-Lj-B3p" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="dLm-WR-6rn"/>
                             <constraint firstItem="xCb-SZ-b60" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="fnq-cv-TTk"/>
                             <constraint firstItem="xCb-SZ-b60" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="hfK-4c-ena"/>
                             <constraint firstItem="xCb-SZ-b60" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="jDf-pg-S3p"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="startStopButton" destination="dM6-Vz-xl7" id="RG9-gE-64D"/>
                         <outlet property="textView" destination="xCb-SZ-b60" id="yY7-qj-fI6"/>
+                        <outlet property="timeLabel" destination="6T2-Lj-B3p" id="cHX-na-HDO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

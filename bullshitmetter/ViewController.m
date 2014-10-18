@@ -16,13 +16,22 @@
 @property (strong, nonatomic) NSURL *fileURL;
 
 @property (strong, nonatomic) IBOutlet UITextView *textView;
+@property (strong, nonatomic) IBOutlet UILabel *timeLabel;
+@property (strong, nonatomic) IBOutlet UIButton *startStopButton;
+
+@property (strong, nonatomic) NSTimer *timer;
+@property (nonatomic) int currentTime;
 
 @end
+
+#define DURATION 30
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.timeLabel.text = [NSString stringWithFormat:@"%i s",DURATION];
     
     self.fileURL = [NSURL fileURLWithPathComponents:@[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject], @"Bullshit.m4a"]];
     
@@ -41,16 +50,21 @@
 {
     if ([self.recorder isRecording])
     {
-        [sender setTitle:@"Start" forState:UIControlStateNormal];
-        
-        [self.recorder stop];
-        
-        AVAudioSession *audioSession = [AVAudioSession sharedInstance];
-        [audioSession setActive:NO error:nil];
+        [self stopRecording];
     }
     else
     {
         [sender setTitle:@"Stop" forState:UIControlStateNormal];
+        
+        self.currentTime = DURATION;
+
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:1
+                                                      target:self
+                                                    selector:@selector(ticAction:)
+                                                    userInfo:nil
+                                                     repeats:YES];
+
+        [self.timer fire];
         
         AVAudioSession *session = [AVAudioSession sharedInstance];
         [session setActive:YES error:nil];
@@ -58,4 +72,31 @@
         [self.recorder record];
     }
 }
+
+-(void)ticAction:(NSTimer *)timer
+{
+    self.timeLabel.text = [NSString stringWithFormat:@"%i s",self.currentTime];
+    
+    
+    if (self.currentTime == 0)
+    {
+        [self stopRecording];
+    }
+    
+    self.currentTime--;
+}
+
+-(void)stopRecording
+{
+    self.timeLabel.text = @"ended";
+    [self.timer invalidate];
+    
+    [self.startStopButton setTitle:@"Start" forState:UIControlStateNormal];
+    
+    [self.recorder stop];
+    
+    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+    [audioSession setActive:NO error:nil];
+}
+
 @end
