@@ -10,6 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "UIViewController+MBProgressHUD.h"
 #import <AFNetworking/AFNetworking.h>
+#import "WMGaugeView.h"
 
 @interface ViewController () //<AVAudioRecorderDelegate>
 
@@ -24,6 +25,7 @@
 @property (strong, nonatomic) NSTimer *timer;
 @property (nonatomic) int currentTime;
 
+@property (weak, nonatomic) IBOutlet WMGaugeView *gaugeView;
 @end
 
 #define DURATION 30
@@ -45,6 +47,15 @@
 //    self.recorder.delegate = self;
     self.recorder.meteringEnabled = YES;
     [self.recorder prepareToRecord];
+    
+    [self configureGaugeView];
+}
+
+#pragma mark - UI 
+
+-(void)configureGaugeView
+{
+    
 }
 
 #pragma mark - action
@@ -77,7 +88,7 @@
 
 -(void)ticAction:(NSTimer *)timer
 {
-    self.timeLabel.text = [NSString stringWithFormat:@"%i s",self.currentTime];
+    [self.startStopButton setTitle:[NSString stringWithFormat:@"%i",self.currentTime] forState:UIControlStateNormal];
     
     
     if (self.currentTime == 0)
@@ -88,9 +99,14 @@
     self.currentTime--;
 }
 
+#pragma mark - processing sound and server result
+
 -(void)stopRecording
 {
     self.timeLabel.text = @"ended";
+    
+    [self.startStopButton setTitle:@"Ended" forState:UIControlStateNormal];
+
     [self.timer invalidate];
     
     [self.startStopButton setTitle:@"Start" forState:UIControlStateNormal];

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A379a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -18,20 +18,28 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dM6-Vz-xl7">
-                                <rect key="frame" x="225" y="525" width="150" height="50"/>
+                                <rect key="frame" x="238" y="417" width="125" height="125"/>
+                                <color key="backgroundColor" red="0.96662706139999999" green="0.045546233649999997" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="6HC-v7-F3M"/>
-                                    <constraint firstAttribute="width" constant="150" id="rJA-zO-IV7"/>
+                                    <constraint firstAttribute="height" constant="125" id="6HC-v7-F3M"/>
+                                    <constraint firstAttribute="width" constant="125" id="rJA-zO-IV7"/>
                                 </constraints>
-                                <state key="normal" title="Start">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <state key="normal" title="Rec">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="self.layer.cornerRadius">
+                                        <real key="value" value="62.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="playStopAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="8Xn-CV-7Cj"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xCb-SZ-b60">
-                                <rect key="frame" x="16" y="20" width="568" height="480"/>
+                            <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xCb-SZ-b60">
+                                <rect key="frame" x="16" y="20" width="568" height="382"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -47,13 +55,23 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lsY-j2-uWe" customClass="WMGaugeView">
+                                <rect key="frame" x="150" y="61" width="300" height="300"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="TfU-6c-Iuc"/>
+                                    <constraint firstAttribute="width" constant="300" id="oJ1-BZ-lkk"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="6T2-Lj-B3p" secondAttribute="bottom" constant="40" id="CC8-cX-Nly"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="dM6-Vz-xl7" secondAttribute="bottom" constant="25" id="Vkb-TC-c0D"/>
+                            <constraint firstAttribute="centerX" secondItem="lsY-j2-uWe" secondAttribute="centerX" id="IFi-HU-lVJ"/>
+                            <constraint firstAttribute="centerY" secondItem="lsY-j2-uWe" secondAttribute="centerY" constant="89" id="JnP-Is-URH"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="dM6-Vz-xl7" secondAttribute="bottom" constant="58" id="Vkb-TC-c0D"/>
                             <constraint firstAttribute="centerX" secondItem="dM6-Vz-xl7" secondAttribute="centerX" id="XRb-OX-tZE"/>
-                            <constraint firstItem="dM6-Vz-xl7" firstAttribute="top" secondItem="xCb-SZ-b60" secondAttribute="bottom" constant="25" id="aEm-6e-ByA"/>
+                            <constraint firstItem="dM6-Vz-xl7" firstAttribute="top" secondItem="xCb-SZ-b60" secondAttribute="bottom" constant="15" id="aEm-6e-ByA"/>
                             <constraint firstItem="6T2-Lj-B3p" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="dLm-WR-6rn"/>
                             <constraint firstItem="xCb-SZ-b60" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="fnq-cv-TTk"/>
                             <constraint firstItem="xCb-SZ-b60" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="hfK-4c-ena"/>
@@ -61,6 +79,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="gaugeView" destination="lsY-j2-uWe" id="2Ld-Fi-e4U"/>
                         <outlet property="startStopButton" destination="dM6-Vz-xl7" id="RG9-gE-64D"/>
                         <outlet property="textView" destination="xCb-SZ-b60" id="yY7-qj-fI6"/>
                         <outlet property="timeLabel" destination="6T2-Lj-B3p" id="cHX-na-HDO"/>
