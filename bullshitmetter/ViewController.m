@@ -147,7 +147,7 @@
     
     NSData *file = [NSData dataWithContentsOfURL:self.fileURL];
     
-    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://92.222.1.55:3040"]];
+    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://92.222.1.55"]];
     
     AFHTTPRequestOperation *op = [manager POST:@"/sound"
                                     parameters:nil
