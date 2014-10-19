@@ -147,14 +147,17 @@
     
     NSData *file = [NSData dataWithContentsOfURL:self.fileURL];
     
-    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://92.222.1.55"]];
+#define SERVER_URL @"https://vine.co/v/ObmFzgjqPt1"
+//#define SERVER_URL @"http://92.222.1.55:3040"    
+    
+    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:SERVER_URL]];
     
     AFHTTPRequestOperation *op = [manager POST:@"/sound"
                                     parameters:nil
                      constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
 
                          [formData appendPartWithFileData:file
-                                                     name:@"Bullshit"
+                                                     name:@"myUpload"
                                                  fileName:@"Bullshit.m4a"
                                                  mimeType:@"audio/m4a"];
                          
