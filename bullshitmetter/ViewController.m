@@ -165,7 +165,7 @@
                                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                            [self hideHUD];
 
-                                           
+                                           [self processServerResponse:responseObject];
                                         }
                                        failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                                            [self hideHUDWithCompletionMessage:error.localizedDescription];
