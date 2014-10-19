@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -55,30 +56,51 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lsY-j2-uWe" customClass="WMGaugeView">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lsY-j2-uWe" customClass="WMGaugeView">
                                 <rect key="frame" x="150" y="61" width="300" height="300"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" secondItem="lsY-j2-uWe" secondAttribute="height" multiplier="1:1" id="K4B-Lp-AHs"/>
                                     <constraint firstAttribute="height" constant="300" id="TfU-6c-Iuc"/>
                                     <constraint firstAttribute="width" constant="300" id="oJ1-BZ-lkk"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="TfU-6c-Iuc"/>
+                                        <exclude reference="oJ1-BZ-lkk"/>
+                                    </mask>
+                                </variation>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aP9-s0-XfU">
+                                <rect key="frame" x="183" y="372" width="235" height="30"/>
+                                <state key="normal" title="Plus d'infos sur la note ?">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="AlJ-If-f6H" kind="presentation" identifier="showDetails" modalPresentationStyle="formSheet" id="XW9-al-58d"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerX" secondItem="aP9-s0-XfU" secondAttribute="centerX" id="8jt-tD-iFk"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="6T2-Lj-B3p" secondAttribute="bottom" constant="40" id="CC8-cX-Nly"/>
                             <constraint firstAttribute="centerX" secondItem="lsY-j2-uWe" secondAttribute="centerX" id="IFi-HU-lVJ"/>
                             <constraint firstAttribute="centerY" secondItem="lsY-j2-uWe" secondAttribute="centerY" constant="89" id="JnP-Is-URH"/>
+                            <constraint firstItem="lsY-j2-uWe" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="70" id="Qfk-PW-iUX"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="dM6-Vz-xl7" secondAttribute="bottom" constant="58" id="Vkb-TC-c0D"/>
+                            <constraint firstItem="dM6-Vz-xl7" firstAttribute="top" secondItem="aP9-s0-XfU" secondAttribute="bottom" constant="15" id="WVQ-Xc-Mgb"/>
                             <constraint firstAttribute="centerX" secondItem="dM6-Vz-xl7" secondAttribute="centerX" id="XRb-OX-tZE"/>
                             <constraint firstItem="dM6-Vz-xl7" firstAttribute="top" secondItem="xCb-SZ-b60" secondAttribute="bottom" constant="15" id="aEm-6e-ByA"/>
                             <constraint firstItem="6T2-Lj-B3p" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="dLm-WR-6rn"/>
                             <constraint firstItem="xCb-SZ-b60" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="fnq-cv-TTk"/>
                             <constraint firstItem="xCb-SZ-b60" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="hfK-4c-ena"/>
                             <constraint firstItem="xCb-SZ-b60" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="jDf-pg-S3p"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lsY-j2-uWe" secondAttribute="trailing" constant="70" id="vj5-XH-vOZ"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="detailsButton" destination="aP9-s0-XfU" id="4vh-37-BTM"/>
                         <outlet property="gaugeView" destination="lsY-j2-uWe" id="2Ld-Fi-e4U"/>
                         <outlet property="startStopButton" destination="dM6-Vz-xl7" id="RG9-gE-64D"/>
                         <outlet property="textView" destination="xCb-SZ-b60" id="yY7-qj-fI6"/>
@@ -87,6 +109,77 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Bullshit Details View Controller-->
+        <scene sceneID="b51-fA-yHt">
+            <objects>
+                <viewController id="AlJ-If-f6H" customClass="BullshitDetailsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5h4-of-8GU"/>
+                        <viewControllerLayoutGuide type="bottom" id="pHy-5V-tUg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2Xx-Dk-lne">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hj2-EW-bIO">
+                                <rect key="frame" x="0.0" y="142" width="600" height="458"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <attributes>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kVo-q7-say">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="lhw-Tq-mg8"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Bullshit details" id="rrj-na-YlL">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="WgL-3l-UTK">
+                                            <connections>
+                                                <action selector="dismiss:" destination="AlJ-If-f6H" id="LfP-HB-kxa"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="10 / 20" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="25X-Eu-b1v">
+                                <rect key="frame" x="202" y="50" width="196" height="84"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Hj2-EW-bIO" firstAttribute="leading" secondItem="2Xx-Dk-lne" secondAttribute="leadingMargin" constant="-16" id="0ef-m6-211"/>
+                            <constraint firstItem="kVo-q7-say" firstAttribute="top" secondItem="5h4-of-8GU" secondAttribute="bottom" id="22d-Pv-WUY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="kVo-q7-say" secondAttribute="trailing" constant="-16" id="84t-Xs-nDj"/>
+                            <constraint firstItem="25X-Eu-b1v" firstAttribute="top" secondItem="kVo-q7-say" secondAttribute="bottom" constant="6" id="Dqf-ek-Rkv"/>
+                            <constraint firstItem="Hj2-EW-bIO" firstAttribute="top" secondItem="25X-Eu-b1v" secondAttribute="bottom" constant="8" id="E8w-J3-bmo"/>
+                            <constraint firstAttribute="centerX" secondItem="25X-Eu-b1v" secondAttribute="centerX" id="KjS-KW-VJS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Hj2-EW-bIO" secondAttribute="trailing" constant="-16" id="gli-KD-fhz"/>
+                            <constraint firstItem="pHy-5V-tUg" firstAttribute="top" secondItem="Hj2-EW-bIO" secondAttribute="bottom" id="xX2-3h-XNT"/>
+                            <constraint firstItem="kVo-q7-say" firstAttribute="leading" secondItem="2Xx-Dk-lne" secondAttribute="leadingMargin" constant="-16" id="yFa-AG-HHu"/>
+                        </constraints>
+                    </view>
+                    <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="grade" destination="25X-Eu-b1v" id="Uea-Mj-EXd"/>
+                        <outlet property="textView" destination="Hj2-EW-bIO" id="ywe-gj-pew"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vne-Dq-xMS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1190" y="206"/>
         </scene>
     </scenes>
 </document>

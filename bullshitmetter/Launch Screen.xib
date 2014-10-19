@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -10,11 +10,11 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo blanc.png" translatesAutoresizingMaskIntoConstraints="NO" id="CXX-kg-XN7">
-                    <rect key="frame" x="80" y="80" width="320" height="320"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logobullplein" translatesAutoresizingMaskIntoConstraints="NO" id="CXX-kg-XN7">
+                    <rect key="frame" x="134" y="139" width="201" height="201"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="320" id="7tO-rN-2E7"/>
-                        <constraint firstAttribute="height" constant="320" id="hHL-Ju-NAC"/>
+                        <constraint firstAttribute="width" constant="201" id="7tO-rN-2E7"/>
+                        <constraint firstAttribute="height" constant="201" id="hHL-Ju-NAC"/>
                         <constraint firstAttribute="height" constant="480" id="hLZ-Hm-aFC"/>
                         <constraint firstAttribute="width" constant="480" id="sgS-Lx-QK5"/>
                     </constraints>
@@ -31,11 +31,34 @@
                         </mask>
                     </variation>
                 </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Sens interdit" translatesAutoresizingMaskIntoConstraints="NO" id="sdk-XN-kNq">
+                    <rect key="frame" x="76" y="80" width="320" height="320"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="480" id="2OA-NE-omD"/>
+                        <constraint firstAttribute="width" constant="320" id="EPS-9m-VDh"/>
+                        <constraint firstAttribute="height" constant="480" id="PIs-ba-EFP"/>
+                        <constraint firstAttribute="height" constant="320" id="cyp-h4-oZA"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="PIs-ba-EFP"/>
+                            <exclude reference="2OA-NE-omD"/>
+                        </mask>
+                    </variation>
+                    <variation key="heightClass=regular-widthClass=regular">
+                        <mask key="constraints">
+                            <exclude reference="PIs-ba-EFP"/>
+                            <exclude reference="2OA-NE-omD"/>
+                        </mask>
+                    </variation>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="centerX" secondItem="CXX-kg-XN7" secondAttribute="centerX" id="Ged-I7-0rS"/>
+                <constraint firstAttribute="centerX" secondItem="CXX-kg-XN7" secondAttribute="centerX" constant="5.5" id="Ged-I7-0rS"/>
+                <constraint firstAttribute="centerY" secondItem="sdk-XN-kNq" secondAttribute="centerY" id="MxR-LY-8L1"/>
                 <constraint firstAttribute="centerY" secondItem="CXX-kg-XN7" secondAttribute="centerY" id="gl9-sV-ZQv"/>
+                <constraint firstAttribute="centerX" secondItem="sdk-XN-kNq" secondAttribute="centerX" constant="4" id="s2N-yS-FHz"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -43,6 +66,7 @@
         </view>
     </objects>
     <resources>
-        <image name="logo blanc.png" width="1689" height="1689"/>
+        <image name="Sens interdit" width="1590" height="1590"/>
+        <image name="logobullplein" width="994" height="816"/>
     </resources>
 </document>

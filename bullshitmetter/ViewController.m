@@ -25,7 +25,11 @@
 @property (strong, nonatomic) NSTimer *timer;
 @property (nonatomic) int currentTime;
 
+@property (strong, nonatomic) NSDictionary *bullshitAnswer;
+
 @property (weak, nonatomic) IBOutlet WMGaugeView *gaugeView;
+@property (weak, nonatomic) IBOutlet UIButton *detailsButton;
+
 @end
 
 #define DURATION 30
@@ -51,6 +55,12 @@
     [self.recorder prepareToRecord];
     
     [self configureGaugeView];
+    
+//    self.bullshitAnswer = @{ @"buzzwords" : @[@"foo", @"bar"],
+//                        @"grade" : @12,
+//                        @"flasch-kincaid" : @11.456 ,
+//                        @"recognized_text": @"Mister Foo walk into a Bar named The Foo"};
+
 }
 
 #pragma mark - UI 
@@ -126,6 +136,16 @@
 
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.identifier isEqualToString:@"showDetails"]) {
+        
+        BullshitDetailsViewController *vc = segue.destinationViewController;
+        vc.bullshitDict = self.bullshitAnswer;
+        
+    }
+}
+
 #pragma mark - processing sound and server result
 
 -(void)stopRecording
@@ -147,7 +167,7 @@
     
     NSData *file = [NSData dataWithContentsOfURL:self.fileURL];
     
-    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://92.222.1.55"]];
+    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://104.131.98.184"]];
     
     AFHTTPRequestOperation *op = [manager POST:@"/sound"
                                     parameters:nil
@@ -161,6 +181,7 @@
                                         }
                                        success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                            [self hideHUD];
+                                           self.detailsButton.hidden = NO;
 
                                            [self processServerResponse:responseObject];
                                         }
@@ -188,10 +209,12 @@
      
      */
     
-    serverResponse = @{ @"buzzwords" : @[@"foo", @"bar"],
-                        @"grade" : @12,
-                        @"flasch-kincaid" : @11.456 ,
-                        @"recognized_text": @"Mister Foo walk into a Bar named The Foo"};
+    self.bullshitAnswer = serverResponse;
+    
+//    serverResponse = @{ @"buzzwords" : @[@"foo", @"bar"],
+//                        @"grade" : @12,
+//                        @"flasch-kincaid" : @11.456 ,
+//                        @"recognized_text": @"Mister Foo walk into a Bar named The Foo"};
     
     NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:serverResponse[@"recognized_text"]];
     
