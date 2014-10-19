@@ -147,8 +147,7 @@
     
     NSData *file = [NSData dataWithContentsOfURL:self.fileURL];
     
-#define SERVER_URL @"https://vine.co/v/ObmFzgjqPt1"
-//#define SERVER_URL @"http://92.222.1.55:3040"    
+#define SERVER_URL @"http://92.222.1.55:3040"    
     
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:SERVER_URL]];
     
