@@ -20,8 +20,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:self.bullshitDict[@"recognized_text"]];
     
+    NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:self.bullshitDict[@"recognized_text"]];
+    [string addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:20] range:NSMakeRange(0, [string.string length])];
+
     NSArray *words = self.bullshitDict[@"buzzwords"];
     
     [words enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -39,7 +41,7 @@
     
     self.textView.attributedText = string;
     
-    self.grade.text = [NSString stringWithFormat:@"%@ / 20", self.bullshitDict[@"grade"]];
+    self.grade.text = [NSString stringWithFormat:@"%.1f / 20", [self.bullshitDict[@"grade"]doubleValue]];
 
 }
 

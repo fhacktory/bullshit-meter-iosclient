@@ -56,10 +56,10 @@
     
     [self configureGaugeView];
     
-//    self.bullshitAnswer = @{ @"buzzwords" : @[@"foo", @"bar"],
-//                        @"grade" : @12,
-//                        @"flasch-kincaid" : @11.456 ,
-//                        @"recognized_text": @"Mister Foo walk into a Bar named The Foo"};
+    self.bullshitAnswer = @{ @"buzzwords" : @[@"foo", @"bar"],
+                        @"grade" : @12.86757659,
+                        @"flasch-kincaid" : @11.456 ,
+                        @"recognized_text": @"Mister Foo walk into a Bar named The Foo"};
 
 }
 
@@ -167,7 +167,8 @@
     
     NSData *file = [NSData dataWithContentsOfURL:self.fileURL];
     
-    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://104.131.98.184"]];
+//    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://104.131.98.184"]];
+    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:@"http://178.62.220.73"]];
     
     AFHTTPRequestOperation *op = [manager POST:@"/sound"
                                     parameters:nil
@@ -216,24 +217,24 @@
 //                        @"flasch-kincaid" : @11.456 ,
 //                        @"recognized_text": @"Mister Foo walk into a Bar named The Foo"};
     
-    NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:serverResponse[@"recognized_text"]];
+//    NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:serverResponse[@"recognized_text"]];
+//    
+//    NSArray *words = serverResponse[@"buzzwords"];
+//    
+//    [words enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+//        NSRange searchRange = NSMakeRange(0, [string.string length]);
+//        
+//        NSRange range;
+//        while ((range = [string.string rangeOfString:obj options:NSCaseInsensitiveSearch range:searchRange]).location != NSNotFound) {
+//            
+//            [string addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:range];
+//            [string addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:self.textView.font.pointSize] range:range];
+//            
+//            searchRange = NSMakeRange(NSMaxRange(range), [string.string length] - NSMaxRange(range));
+//        }
+//    }];
     
-    NSArray *words = serverResponse[@"buzzwords"];
-    
-    [words enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        NSRange searchRange = NSMakeRange(0, [string.string length]);
-        
-        NSRange range;
-        while ((range = [string.string rangeOfString:obj options:NSCaseInsensitiveSearch range:searchRange]).location != NSNotFound) {
-            
-            [string addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:range];
-            [string addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:self.textView.font.pointSize] range:range];
-            
-            searchRange = NSMakeRange(NSMaxRange(range), [string.string length] - NSMaxRange(range));
-        }
-    }];
-    
-    self.textView.attributedText = string;
+//    self.textView.attributedText = string;
     [self.gaugeView setValue:[serverResponse[@"grade"] floatValue] animated:YES];
     
 }
